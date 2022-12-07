@@ -15,6 +15,8 @@ class BaseRoumerController {
 
     return "";
   }
+
+  var onWillPop = () async => false;
 }
 
 final _hasAuthTokenProvider = FutureProvider<bool>((ref) async {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:roumer/controller/roumer.dart';
 import 'package:roumer/view/before_login/base.dart';
+import 'package:roumer/view/compornent/base.dart';
 import 'package:roumer/view/logined/base.dart';
 
 class RoumerApp extends ConsumerWidget {
@@ -15,14 +16,16 @@ class RoumerApp extends ConsumerWidget {
     var controller = ref.read(_controllerProvider);
     var hasAuthToken = ref.watch(controller.hasAuthTokenProvider);
 
+    controller.onWillPop = () async => false;
+
     //show first demo
     return WillPopScope(
       onWillPop: () async {
-        return false;
+        return await controller.onWillPop();
       },
       child: hasAuthToken.when<Widget>(
-        loading: () => const Scaffold(
-          body: Center(
+        loading: () => const BasePage(
+          child: Center(
             child: Text(
               "Roumer",
               textAlign: TextAlign.center,
