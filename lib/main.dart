@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:roumer/Localization.dart';
+import 'package:roumer/view/roumer.dart';
 //import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
@@ -37,49 +38,11 @@ class MyAppState extends State<MyApp> {
       locale: const Locale('ja', 'JP'),
       initialRoute: '/',
       routes: {
-        '/': (context) => _StartPage(),
-        '/home': (context) => _StartPage(),
+        '/': (context) => RoumerApp(),
       },
       onGenerateRoute: (settings) {
         return null;
       },
-    );
-  }
-}
-
-class _StartPage extends StatefulWidget {
-  @override
-  _StartPageState createState() => _StartPageState();
-}
-
-class _StartPageState extends State<_StartPage> {
-  @override
-  Widget build(BuildContext context) {
-    // _model.checkAuthention((hasAuthention) {
-    //   if (hasAuthention) {
-    //     //TODO
-    //     Navigator.pushReplacementNamed(context, '/join_club');
-    //   } else {
-    //     Navigator.pushReplacementNamed(context, '/login');
-    //   }
-    // });
-
-    Future(() {
-      Navigator.pushReplacementNamed(context, '/archive');
-    });
-
-    //show first demo
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          "Roumer",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 32,
-          ),
-        ),
-      ),
     );
   }
 }
