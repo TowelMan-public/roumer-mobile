@@ -15,9 +15,6 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  bool isNotAbleShowDialog = false;
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -71,10 +68,11 @@ class _StartPageState extends State<_StartPage> {
       Navigator.pushReplacementNamed(context, '/archive');
     });
 
+    //show first demo
     return const Scaffold(
       body: Center(
         child: Text(
-          "アプリ名",
+          "Roumer",
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.black,
