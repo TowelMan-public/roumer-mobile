@@ -8,11 +8,11 @@ class RoumerApp extends ConsumerWidget {
   RoumerApp({super.key});
 
   final _controllerProvider =
-      StateProvider<RoumerAppController>((ref) => RoumerAppController());
+      Provider<RoumerAppController>((ref) => RoumerAppController());
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var controller = ref.watch(_controllerProvider);
+    var controller = ref.read(_controllerProvider);
     var hasAuthToken = ref.watch(controller.hasAuthTokenProvider);
 
     //show first demo
