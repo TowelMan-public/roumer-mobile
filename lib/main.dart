@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:roumer/Localization.dart';
 import 'package:roumer/view/roumer.dart';
-//import 'package:flutter_localizations/flutter_localizations.dart';
+// ignore: depend_on_referenced_packages
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -26,8 +30,8 @@ class MyAppState extends State<MyApp> {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       localizationsDelegates: const [
-        // GlobalMaterialLocalizations.delegate,
-        // GlobalWidgetsLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
         DefaultCupertinoLocalizations.delegate,
         JapaneseCupertinoLocalizations.delegate,
       ],

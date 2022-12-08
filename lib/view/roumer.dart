@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:roumer/controller/roumer.dart';
 import 'package:roumer/view/before_login/base.dart';
-import 'package:roumer/view/compornent/base.dart';
 import 'package:roumer/view/logined/base.dart';
 
 class RoumerApp extends ConsumerWidget {
@@ -24,15 +23,13 @@ class RoumerApp extends ConsumerWidget {
         return await controller.onWillPop();
       },
       child: hasAuthToken.when<Widget>(
-        loading: () => const BasePage(
-          child: Center(
-            child: Text(
-              "Roumer",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 32,
-              ),
+        loading: () => const Center(
+          child: Text(
+            "Roumer",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 32,
             ),
           ),
         ),
@@ -40,6 +37,5 @@ class RoumerApp extends ConsumerWidget {
         data: (isLogined) => isLogined ? HomePage() : BeforeLoginPage(),
       ),
     );
-    // );
   }
 }
