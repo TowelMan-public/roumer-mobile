@@ -25,19 +25,22 @@ class RoumerApp extends ConsumerWidget {
         }
         return await controller.onWillPop();
       },
-      child: hasAuthToken.when<Widget>(
-        loading: () => const Center(
-          child: Text(
-            "Roumer",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 32,
+      child: SafeArea(
+        bottom: false,
+        child: hasAuthToken.when<Widget>(
+          loading: () => const Center(
+            child: Text(
+              "Roumer",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 32,
+              ),
             ),
           ),
+          error: (error, stack) => const Text("error"),
+          data: (isLogined) => isLogined ? HomePage() : BeforeLoginPage(),
         ),
-        error: (error, stack) => const Text("error"),
-        data: (isLogined) => isLogined ? HomePage() : BeforeLoginPage(),
       ),
     );
   }
