@@ -26,7 +26,7 @@ final _hasAuthTokenProvider = FutureProvider<bool>((ref) async {
   ref.read(_canNewProcess.notifier).state = true;
 
   //TODO
-  return true;
+  return false;
 });
 
 final _canNewProcess = StateProvider((ref) => true);
