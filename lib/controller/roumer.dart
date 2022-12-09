@@ -17,11 +17,16 @@ class BaseRoumerController {
   }
 
   var onWillPop = () async => false;
+
+  final canNewProcess = _canNewProcess;
 }
 
 final _hasAuthTokenProvider = FutureProvider<bool>((ref) async {
   var _secret = ref.read(secretProvider);
+  ref.read(_canNewProcess.notifier).state = true;
 
   //TODO
   return true;
 });
+
+final _canNewProcess = StateProvider((ref) => true);

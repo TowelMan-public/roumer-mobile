@@ -12,6 +12,7 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var controller = ref.read(_controllerProvider);
+    var tabState = ref.watch(controller.tabProvider);
 
     return FlexLayout(
       direction: FlexDirection.column,

@@ -20,6 +20,9 @@ class RoumerApp extends ConsumerWidget {
     //show first demo
     return WillPopScope(
       onWillPop: () async {
+        if (!ref.read(controller.canNewProcess)) {
+          return false;
+        }
         return await controller.onWillPop();
       },
       child: hasAuthToken.when<Widget>(
